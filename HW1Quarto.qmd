@@ -5,26 +5,19 @@ editor: visual
 ---
 
 
-x = 5
-x
-
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
 ```{r}
-1 + 1
+# Install necessary packages
+
+# install.packages("tidyverse")    # Includes dplyr, ggplot2, readr, etc.
+# install.packages("readr")        # For reading .csv and .txt files
+# install.packages("dplyr")        # For data manipulation
+#install.packages("ggplot2")      # For plotting (if needed)
+#install.packages("stringr")      # For string manipulation
+#install.packages("purrr")        # For functional programming
+#install.packages("tibble")       # Enhanced data frames
+#install.packages("broom")        # For tidying statistical output
+#install.packages("data.table")   # Efficient data import/manipulation
+#install.packages("janitor")      # For cleaning variable names
+#install.packages("psych")        # For correlation matrices and descriptives
 ```
 
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
