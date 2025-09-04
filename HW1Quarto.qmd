@@ -8,9 +8,9 @@ editor: visual
 ```{r}
 # Install necessary packages
 
-# install.packages("tidyverse")    # Includes dplyr, ggplot2, readr, etc.
-# install.packages("readr")        # For reading .csv and .txt files
-# install.packages("dplyr")        # For data manipulation
+#install.packages("tidyverse")    # Includes dplyr, ggplot2, readr, etc.
+#install.packages("readr")        # For reading .csv and .txt files
+#install.packages("dplyr")        # For data manipulation
 #install.packages("ggplot2")      # For plotting (if needed)
 #install.packages("stringr")      # For string manipulation
 #install.packages("purrr")        # For functional programming
@@ -19,5 +19,21 @@ editor: visual
 #install.packages("data.table")   # Efficient data import/manipulation
 #install.packages("janitor")      # For cleaning variable names
 #install.packages("psych")        # For correlation matrices and descriptives
+
+col_names <- c(
+  "sex", "length", "diameter", "height",
+  "whole_weight", "shucked_weight",
+  "viscera_weight", "shell_weight",
+  "rings")
+
+
+read.table("/Users/joshszczepanski/Downloads/abalone/abalone.data")
+abalone = read.table("/Users/joshszczepanski/Downloads/abalone/abalone.data",
+                      sep = ",",
+                      header = FALSE,
+                      col.names = col_names)
+
+
+                      
 ```
 
