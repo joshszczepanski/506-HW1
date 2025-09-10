@@ -20,6 +20,9 @@ editor: visual
 #install.packages("janitor")      # For cleaning variable names
 #install.packages("psych")        # For correlation matrices and descriptives
 
+
+#1 a)
+
 col_names <- c(
   "sex", "length", "diameter", "height",
   "whole_weight", "shucked_weight",
@@ -33,7 +36,35 @@ abalone = read.table("/Users/joshszczepanski/Downloads/abalone/abalone.data",
                       header = FALSE,
                       col.names = col_names)
 
+#1 b)
+table(abalone$sex)
 
+# The table shows F: 1307, I: 1342, M: 1528
+
+
+#1 c1)
+allweights_and_rings_column <- abalone[ ,c("whole_weight", "shucked_weight",
+  "viscera_weight", "shell_weight", "rings")]
                       
+
+correlations <- sapply(allweights_and_rings_column[1:4], function(x) cor(x, allweights_and_rings_column$rings))
+
+correlations
+
+max_cor_weight <- names(which.max(correlations))
+max_cor_value <- max(correlations)
+
+cat("The weight with the highest correlation is:", max_cor_weight, "it has a correlation of", round(max_cor_value, 4), "\n")
+
+# The weight with the highest correlation is: shell_weight it has a correlation of 0.6276 
+
+library(dplyr)
+
+abalone %>%
+  group_by(sex) %>%
+  summarise(correlation = cor(shell_weight, rings)) %>%
+  arrange(desc(correlation))
+
+
 ```
 
