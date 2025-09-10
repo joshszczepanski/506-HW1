@@ -81,7 +81,8 @@ correlation_I <- cor(abalone_I$shell_weight, abalone_I$rings)
 
 # Store correlations into one vector
 
-# **Attribution of Sources Note: Here I used assistance from Microsoft Copilot to help me figure out that I needed to set each correlation equal to the original sex column names
+# **Attribution of Sources Note: Here I used assistance from Microsoft Copilot to help me figure out that I needed to set each correlation equal to the original sex names and couldn't just write c(correlation_F, correlation_M, correlation_I)
+
 correlation_by_sex <- c(F = correlation_F, M = correlation_M, I = correlation_I)
 
 # Display the correlations
@@ -94,11 +95,24 @@ highest_cor_sex <- names(which.max(correlation_by_sex))
 highest_cor_sex
 
 
+#C3
 
+#Identify the abalone with the most rings
+abalone_most_rings <- which.max(abalone$rings)
 
+#Show the weights for this abalone
+abalone[abalone_most_rings, c("whole_weight", "shucked_weight", "viscera_weight", "shell_weight")]
 
+#C4
 
+amt_viscwt_gt_shellwt <- sum(abalone$viscera_weight > abalone$shell_weight)
 
+amt_viscwt_gt_shellwt
 
+total_abalones <- nrow(abalone)
+
+percent_viscwt_gt_shellwt <- (amt_viscwt_gt_shellwt/total_abalones)
+
+percent_viscwt_gt_shellwt
 ```
 
