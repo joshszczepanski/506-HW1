@@ -23,47 +23,81 @@ editor: visual
 
 #1 a)
 
-col_names <- c(
+#Import the data frame "abalone"
+abalone <- read.table("/Users/joshszczepanski/Downloads/abalone/abalone.data", sep = ",", header = FALSE)
+
+#Assign appropriate column names
+colnames(abalone) <- c(
   "sex", "length", "diameter", "height",
   "whole_weight", "shucked_weight",
   "viscera_weight", "shell_weight",
   "rings")
 
 
-read.table("/Users/joshszczepanski/Downloads/abalone/abalone.data")
-abalone = read.table("/Users/joshszczepanski/Downloads/abalone/abalone.data",
-                      sep = ",",
-                      header = FALSE,
-                      col.names = col_names)
-
 #1 b)
+#Generate a table that shows the number of observations belonging to each sex
 table(abalone$sex)
 
 # The table shows F: 1307, I: 1342, M: 1528
 
 
 #1 c1)
+#Isolate just the weights and rings columns
 allweights_and_rings_column <- abalone[ ,c("whole_weight", "shucked_weight",
   "viscera_weight", "shell_weight", "rings")]
                       
+# Compute correlations between the first 4 columns (the weights) and the 'rings' column using sapply
+correlations_with_rings <- sapply(allweights_and_rings_column[1:4], function(x) cor(x, allweights_and_rings_column$rings))
 
-correlations <- sapply(allweights_and_rings_column[1:4], function(x) cor(x, allweights_and_rings_column$rings))
+correlations_with_rings
 
-correlations
+# Identify which weight has the highest correlation.  
 
-max_cor_weight <- names(which.max(correlations))
-max_cor_value <- max(correlations)
+# **Attribution of Sources Note: Here I used assistance from Microsoft Copilot to help figure out that I need to use the "names" function. Initially, I wrote which.max(correlations_with_rings) and that just returned me the column number '4'
 
-cat("The weight with the highest correlation is:", max_cor_weight, "it has a correlation of", round(max_cor_value, 4), "\n")
+max_cor_weight <- names(which.max(correlations_with_rings))
+
+# Identify correlation of highest correlating weight.
+max_cor_value <- max(correlations_with_rings)
+
+
+#display weight with highest correlation and its value
+max_cor_weight
+max_cor_value
 
 # The weight with the highest correlation is: shell_weight it has a correlation of 0.6276 
 
-library(dplyr)
+#c2
 
-abalone %>%
-  group_by(sex) %>%
-  summarise(correlation = cor(shell_weight, rings)) %>%
-  arrange(desc(correlation))
+#Isolate each sex 
+abalone_F <- abalone[abalone$sex == "F", ]
+abalone_M <- abalone[abalone$sex == "M", ]
+abalone_I <- abalone[abalone$sex == "I", ]
+
+# Store the correlations of shell weight and rings for each isolated sex
+correlation_F <- cor(abalone_F$shell_weight, abalone_F$rings)
+correlation_M <- cor(abalone_M$shell_weight, abalone_M$rings)
+correlation_I <- cor(abalone_I$shell_weight, abalone_I$rings)
+
+# Store correlations into one vector
+
+# **Attribution of Sources Note: Here I used assistance from Microsoft Copilot to help me figure out that I needed to set each correlation equal to the original sex column names
+correlation_by_sex <- c(F = correlation_F, M = correlation_M, I = correlation_I)
+
+# Display the correlations
+correlation_by_sex
+
+# Identify the sex with the highest correlation
+highest_cor_sex <- names(which.max(correlation_by_sex))
+
+# Display the sex showing the highest correlation
+highest_cor_sex
+
+
+
+
+
+
 
 
 ```
