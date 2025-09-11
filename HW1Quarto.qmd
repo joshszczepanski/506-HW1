@@ -104,15 +104,33 @@ abalone_most_rings <- which.max(abalone$rings)
 abalone[abalone_most_rings, c("whole_weight", "shucked_weight", "viscera_weight", "shell_weight")]
 
 #C4
-
+# Get our numerator
 amt_viscwt_gt_shellwt <- sum(abalone$viscera_weight > abalone$shell_weight)
 
-amt_viscwt_gt_shellwt
-
+# Get our denominator
 total_abalones <- nrow(abalone)
 
-percent_viscwt_gt_shellwt <- (amt_viscwt_gt_shellwt/total_abalones)
+# Calculate the %
+percent_viscwt_gt_shellwt <- (amt_viscwt_gt_shellwt/total_abalones)*100
 
+# Display the percentage
 percent_viscwt_gt_shellwt
+
+#The percentage of abalones that have a viscera weight larger than their shell weight is 6.5%
+
+# 1D
+
+# Define the weight columns
+weight_columns <- c("whole_weight", "shucked_weight", "viscera_weight", "shell_weight")
+
+cor_F <- sapply(weight_columns, function(col) cor(abalone_F[[col]], abalone_F$rings))
+cor_M <- sapply(weight_columns, function(col) cor(abalone_M[[col]], abalone_M$rings))
+cor_I <- sapply(weight_columns, function(col) cor(abalone_I[[col]], abalone_I$rings))
+
+# Combine into a data frame
+correlation_table <- rbind(Female = cor_F, Male = cor_M, Infant = cor_I)
+
+# Display the table rounded to 4 decimal places
+round(correlation_table, 4)
 ```
 

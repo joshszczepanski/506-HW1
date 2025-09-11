@@ -235,20 +235,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the weight columns</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>weight_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"whole_weight"</span>, <span class="st">"shucked_weight"</span>, <span class="st">"viscera_weight"</span>, <span class="st">"shell_weight"</span>)</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>cor_F <span class="ot">&lt;-</span> <span class="fu">sapply</span>(weight_columns, <span class="cf">function</span>(col) <span class="fu">cor</span>(abalone_F[[col]], abalone_F<span class="sc">$</span>rings))</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>cor_M <span class="ot">&lt;-</span> <span class="fu">sapply</span>(weight_columns, <span class="cf">function</span>(col) <span class="fu">cor</span>(abalone_M[[col]], abalone_M<span class="sc">$</span>rings))</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>cor_I <span class="ot">&lt;-</span> <span class="fu">sapply</span>(weight_columns, <span class="cf">function</span>(col) <span class="fu">cor</span>(abalone_I[[col]], abalone_I<span class="sc">$</span>rings))</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into a data frame</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>correlation_table <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="at">Female =</span> cor_F, <span class="at">Male =</span> cor_M, <span class="at">Infant =</span> cor_I)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the table rounded to 4 decimal places</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(correlation_table, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the correlation between each weight variable and rings for female abalones</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># **Attribution of Sources Note: Here I used assistance from Microsoft Copilot to help me clean up my syntax. I was originally missing "function(col)" and the double brackets around col</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>cor_F <span class="ot">&lt;-</span> <span class="fu">sapply</span>(weight_columns, <span class="cf">function</span>(col) <span class="fu">cor</span>(abalone_F[[col]], abalone_F<span class="sc">$</span>rings))</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the correlation between each weight variable and rings for male abalones</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">#**Attribution of Sources Note: see previous note</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>cor_M <span class="ot">&lt;-</span> <span class="fu">sapply</span>(weight_columns, <span class="cf">function</span>(col) <span class="fu">cor</span>(abalone_M[[col]], abalone_M<span class="sc">$</span>rings))</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the correlation between each weight variable and rings for infant abalones</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co">#**Attribution of Sources Note: see previous note</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>cor_I <span class="ot">&lt;-</span> <span class="fu">sapply</span>(weight_columns, <span class="cf">function</span>(col) <span class="fu">cor</span>(abalone_I[[col]], abalone_I<span class="sc">$</span>rings))</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into a data frame</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>correlation_table <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="at">Female =</span> cor_F, <span class="at">Male =</span> cor_M, <span class="at">Infant =</span> cor_I)</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the table rounded to 4 decimal places</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(correlation_table, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       whole_weight shucked_weight viscera_weight shell_weight
 Female       0.2668         0.0948         0.2116       0.4059
 Male         0.3722         0.2224         0.3210       0.5110
 Infant       0.6963         0.6202         0.6733       0.7254</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1E</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run T-tests comparing female to male</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>t_f_m <span class="ot">&lt;-</span> <span class="fu">t.test</span>(abalone_F<span class="sc">$</span>rings, abalone_M<span class="sc">$</span>rings)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Run T-tests comparing female to infant</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>t_f_i <span class="ot">&lt;-</span> <span class="fu">t.test</span>(abalone_F<span class="sc">$</span>rings, abalone_I<span class="sc">$</span>rings)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run T-tests comparing male to infant</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>t_m_i <span class="ot">&lt;-</span> <span class="fu">t.test</span>(abalone_M<span class="sc">$</span>rings, abalone_I<span class="sc">$</span>rings)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>t_f_m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  abalone_F$rings and abalone_M$rings
+t = 3.6657, df = 2742.4, p-value = 0.0002514
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.1971045 0.6505082
+sample estimates:
+mean of x mean of y 
+  11.1293   10.7055 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>t_f_i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  abalone_F$rings and abalone_I$rings
+t = 29.477, df = 2508.9, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 3.023380 3.454304
+sample estimates:
+mean of x mean of y 
+11.129304  7.890462 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>t_m_i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  abalone_M$rings and abalone_I$rings
+t = 27.221, df = 2859, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 2.612263 3.017808
+sample estimates:
+mean of x mean of y 
+10.705497  7.890462 </code></pre>
 </div>
 </div>
 
