@@ -312,6 +312,44 @@ sample estimates:
 mean of x mean of y 
 10.705497  7.890462 </code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>food_expenditures <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"/Users/joshszczepanski/Desktop/506/506-HW1/food_expenditure.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(food_expenditures) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"Age"</span>, <span class="st">"Number of Household Members"</span>, <span class="st">"State"</span>, <span class="st">"Currency"</span>, <span class="st">"Total Food Ependiture"</span>, <span class="st">"Grocery Stores Expenditure"</span>, <span class="st">"Dining Out Expenditure"</span>, <span class="st">"Miscellaneous Food Expenditure"</span>, <span class="st">"Amount of times Dined Out"</span>, <span class="st">"Is alcohol included in your expenditures?"</span>, <span class="st">"Food Assistance Prograns Used"</span>) </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#abalone_F &lt;- abalone[abalone$sex == "F", ]</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>food_expendituresUSD <span class="ot">&lt;-</span> food_expenditures[food_expenditures<span class="sc">$</span>Currency <span class="sc">==</span> <span class="st">"USD"</span>, ]</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(food_expendituresUSD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID Age Number of Household Members State Currency Total Food Ependiture
+1  1  68                           7    LA      USD                436.35
+2  2  88                           5    WA      USD                      
+3  3  82                           3    MS      USD                 279.1
+4  4  73                           8    AK      USD                -20.98
+5  5  89                           0    IN      USD                494.87
+7  7  38                           4    DC      USD                318.79
+  Grocery Stores Expenditure Dining Out Expenditure
+1                     168.59                 140.71
+2                     452.10                 192.94
+3                     301.66                 239.84
+4                     139.66                  69.19
+5                         NA                 191.72
+7                     153.49                 104.05
+  Miscellaneous Food Expenditure Amount of times Dined Out
+1                         109.77                         4
+2                             NA                         1
+3                         103.94                         9
+4                          44.84                         2
+5                         172.31                         3
+7                          39.21                         1
+  Is alcohol included in your expenditures? Food Assistance Prograns Used
+1                                       Yes                          None
+2                                   Unknown                          SNAP
+3                                       Yes                          None
+4                                   Unknown                          None
+5                                       Yes                          None
+7                                       Yes                          SNAP</code></pre>
+</div>
 </div>
 
 </main>

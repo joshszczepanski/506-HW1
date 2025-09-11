@@ -156,5 +156,16 @@ t_m_i <- t.test(abalone_M$rings, abalone_I$rings)
 t_f_m
 t_f_i
 t_m_i
+
+
+
+food_expenditures <- read.table("/Users/joshszczepanski/Desktop/506/506-HW1/food_expenditure.csv", sep = ",", header = TRUE)
+
+colnames(food_expenditures) <- c("ID", "Age", "Number of Household Members", "State", "Currency", "Total Food Ependiture", "Grocery Stores Expenditure", "Dining Out Expenditure", "Miscellaneous Food Expenditure", "Amount of times Dined Out", "Is alcohol included in your expenditures?", "Food Assistance Prograns Used") 
+
+#abalone_F <- abalone[abalone$sex == "F", ]
+food_expendituresUSD <- food_expenditures[food_expenditures$Currency == "USD", ]
+
+head(food_expendituresUSD)
 ```
 
