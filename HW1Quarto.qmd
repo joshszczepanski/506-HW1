@@ -123,8 +123,17 @@ percent_viscwt_gt_shellwt
 # Define the weight columns
 weight_columns <- c("whole_weight", "shucked_weight", "viscera_weight", "shell_weight")
 
+# Calculating the correlation between each weight variable and rings for female abalones
+
+# **Attribution of Sources Note: Here I used assistance from Microsoft Copilot to help me clean up my syntax. I was originally missing "function(col)" and the double brackets around col
 cor_F <- sapply(weight_columns, function(col) cor(abalone_F[[col]], abalone_F$rings))
+
+# Calculating the correlation between each weight variable and rings for male abalones
+#**Attribution of Sources Note: see previous note
 cor_M <- sapply(weight_columns, function(col) cor(abalone_M[[col]], abalone_M$rings))
+
+# Calculating the correlation between each weight variable and rings for infant abalones
+#**Attribution of Sources Note: see previous note
 cor_I <- sapply(weight_columns, function(col) cor(abalone_I[[col]], abalone_I$rings))
 
 # Combine into a data frame
@@ -132,5 +141,20 @@ correlation_table <- rbind(Female = cor_F, Male = cor_M, Infant = cor_I)
 
 # Display the table rounded to 4 decimal places
 round(correlation_table, 4)
+
+# 1E
+
+# Run T-tests comparing female to male
+t_f_m <- t.test(abalone_F$rings, abalone_M$rings)
+# Run T-tests comparing female to infant
+t_f_i <- t.test(abalone_F$rings, abalone_I$rings)
+# Run T-tests comparing male to infant
+t_m_i <- t.test(abalone_M$rings, abalone_I$rings)
+
+
+# Display results
+t_f_m
+t_f_i
+t_m_i
 ```
 
