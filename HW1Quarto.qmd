@@ -21,7 +21,7 @@ editor: visual
 #install.packages("psych")        # For correlation matrices and descriptives
 
 
-#1 a)
+#1 A)
 
 #Import the data frame "abalone"
 abalone <- read.table("/Users/joshszczepanski/Downloads/abalone/abalone.data", sep = ",", header = FALSE)
@@ -34,14 +34,14 @@ colnames(abalone) <- c(
   "rings")
 
 
-#1 b)
+#1 B)
 #Generate a table that shows the number of observations belonging to each sex
 table(abalone$sex)
 
 # The table shows F: 1307, I: 1342, M: 1528
 
 
-#1 c1)
+#1 C1)
 #Isolate just the weights and rings columns
 allweights_and_rings_column <- abalone[ ,c("whole_weight", "shucked_weight",
   "viscera_weight", "shell_weight", "rings")]
@@ -67,7 +67,7 @@ max_cor_value
 
 # The weight with the highest correlation is: shell_weight it has a correlation of 0.6276 
 
-#c2
+#1 C2)
 
 #Isolate each sex 
 abalone_F <- abalone[abalone$sex == "F", ]
@@ -95,7 +95,7 @@ highest_cor_sex <- names(which.max(correlation_by_sex))
 highest_cor_sex
 
 
-#C3
+#1 C3)
 
 #Identify the abalone with the most rings
 abalone_most_rings <- which.max(abalone$rings)
@@ -103,7 +103,7 @@ abalone_most_rings <- which.max(abalone$rings)
 #Show the weights for this abalone
 abalone[abalone_most_rings, c("whole_weight", "shucked_weight", "viscera_weight", "shell_weight")]
 
-#C4
+#1 C4)
 # Get our numerator
 amt_viscwt_gt_shellwt <- sum(abalone$viscera_weight > abalone$shell_weight)
 
@@ -118,7 +118,7 @@ percent_viscwt_gt_shellwt
 
 #The percentage of abalones that have a viscera weight larger than their shell weight is 6.5%
 
-# 1D
+#1 D)
 
 # Define the weight columns
 weight_columns <- c("whole_weight", "shucked_weight", "viscera_weight", "shell_weight")
@@ -142,7 +142,7 @@ correlation_table <- rbind(Female = cor_F, Male = cor_M, Infant = cor_I)
 # Display the table rounded to 4 decimal places
 round(correlation_table, 4)
 
-# 1E
+# 1 E)
 
 # Run T-tests comparing female to male
 t_f_m <- t.test(abalone_F$rings, abalone_M$rings)
@@ -158,14 +158,61 @@ t_f_i
 t_m_i
 
 
+#2 A)
 
+# Impported Data
 food_expenditures <- read.table("/Users/joshszczepanski/Desktop/506/506-HW1/food_expenditure.csv", sep = ",", header = TRUE)
 
+#2 B)
+# Cleaned up variable names
 colnames(food_expenditures) <- c("ID", "Age", "Number of Household Members", "State", "Currency", "Total Food Ependiture", "Grocery Stores Expenditure", "Dining Out Expenditure", "Miscellaneous Food Expenditure", "Amount of times Dined Out", "Is alcohol included in your expenditures?", "Food Assistance Prograns Used") 
 
-#abalone_F <- abalone[abalone$sex == "F", ]
+#2 C)
+# Isolated only those paying in USD
 food_expendituresUSD <- food_expenditures[food_expenditures$Currency == "USD", ]
 
-head(food_expendituresUSD)
+# Show the number of observations before restricting the data
+nrow(food_expenditures)
+
+# Show the number of observations after restricting the data
+nrow(food_expendituresUSD)
+
+#2 D)
+# Remove all responses by people below the age of 18
+food_expendituresUSD_AdultsOnly <- food_expendituresUSD[food_expendituresUSD$Age >= 18, ]
+
+#2 E)
+# Remove all responses that did not provide a response for State
+food_expendituresUSD_AdultsOnly_States <- food_expendituresUSD_AdultsOnly[food_expendituresUSD_AdultsOnly$State != '', ]
+
+#2 F)
+# Remove responses where there are food expenditures reported as negative values
+food_expendituresUSD_AdultsOnly_States_wonegatives <- food_expendituresUSD_AdultsOnly_States[
+  food_expendituresUSD_AdultsOnly_States$`Total Food Ependiture` >= 0 &
+  food_expendituresUSD_AdultsOnly_States$`Grocery Stores Expenditure` >= 0 &
+  food_expendituresUSD_AdultsOnly_States$`Dining Out Expenditure` >= 0 &
+  food_expendituresUSD_AdultsOnly_States$`Miscellaneous Food Expenditure` >= 0, 
+]
+
+#2 G
+# Remove responses where the number of times dining out exceeds an average of 2x per day
+food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout <- food_expendituresUSD_AdultsOnly_States_wonegatives[food_expendituresUSD_AdultsOnly_States_wonegatives$`Amount of times Dined Out`, ]
+
+# Simplify name
+food_expenditures_cleaned <- food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout
+
+# Display rows to ensure each step cleaned data
+nrow(food_expenditures)
+nrow(food_expendituresUSD)
+nrow(food_expendituresUSD_AdultsOnly)
+nrow(food_expendituresUSD_AdultsOnly_States)
+nrow(food_expendituresUSD_AdultsOnly_States_wonegatives)
+nrow(food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout)
+
+# Simplify name
+food_expenditures_cleaned <- food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout
+
+# 2 H
+nrow(food_expenditures_cleaned)
 ```
 

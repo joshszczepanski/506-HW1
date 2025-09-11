@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("psych")        # For correlation matrices and descriptives</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#1 a)</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#1 A)</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#Import the data frame "abalone"</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>abalone <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"/Users/joshszczepanski/Downloads/abalone/abalone.data"</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> <span class="cn">FALSE</span>)</span>
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"rings"</span>)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">#1 b)</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">#1 B)</span></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#Generate a table that shows the number of observations belonging to each sex</span></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(abalone<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -136,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The table shows F: 1307, I: 1342, M: 1528</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1 c1)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1 C1)</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Isolate just the weights and rings columns</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>allweights_and_rings_column <span class="ot">&lt;-</span> abalone[ ,<span class="fu">c</span>(<span class="st">"whole_weight"</span>, <span class="st">"shucked_weight"</span>,</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"viscera_weight"</span>, <span class="st">"shell_weight"</span>, <span class="st">"rings"</span>)]</span>
@@ -170,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The weight with the highest correlation is: shell_weight it has a correlation of 0.6276 </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#c2</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#1 C2)</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Isolate each sex </span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>abalone_F <span class="ot">&lt;-</span> abalone[abalone<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"F"</span>, ]</span>
@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "I"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#C3</span></span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#1 C3)</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Identify the abalone with the most rings</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>abalone_most_rings <span class="ot">&lt;-</span> <span class="fu">which.max</span>(abalone<span class="sc">$</span>rings)</span>
@@ -213,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>    whole_weight shucked_weight viscera_weight shell_weight
 481       1.8075         0.7055         0.3215        0.475</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#C4</span></span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#1 C4)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Get our numerator</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>amt_viscwt_gt_shellwt <span class="ot">&lt;-</span> <span class="fu">sum</span>(abalone<span class="sc">$</span>viscera_weight <span class="sc">&gt;</span> abalone<span class="sc">$</span>shell_weight)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The percentage of abalones that have a viscera weight larger than their shell weight is 6.5%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1D</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#1 D)</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the weight columns</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>weight_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"whole_weight"</span>, <span class="st">"shucked_weight"</span>, <span class="st">"viscera_weight"</span>, <span class="st">"shell_weight"</span>)</span>
@@ -259,7 +259,7 @@ Female       0.2668         0.0948         0.2116       0.4059
 Male         0.3722         0.2224         0.3210       0.5110
 Infant       0.6963         0.6202         0.6733       0.7254</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1E</span></span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 E)</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run T-tests comparing female to male</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>t_f_m <span class="ot">&lt;-</span> <span class="fu">t.test</span>(abalone_F<span class="sc">$</span>rings, abalone_M<span class="sc">$</span>rings)</span>
@@ -312,43 +312,85 @@ sample estimates:
 mean of x mean of y 
 10.705497  7.890462 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>food_expenditures <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"/Users/joshszczepanski/Desktop/506/506-HW1/food_expenditure.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#2 A)</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(food_expenditures) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"Age"</span>, <span class="st">"Number of Household Members"</span>, <span class="st">"State"</span>, <span class="st">"Currency"</span>, <span class="st">"Total Food Ependiture"</span>, <span class="st">"Grocery Stores Expenditure"</span>, <span class="st">"Dining Out Expenditure"</span>, <span class="st">"Miscellaneous Food Expenditure"</span>, <span class="st">"Amount of times Dined Out"</span>, <span class="st">"Is alcohol included in your expenditures?"</span>, <span class="st">"Food Assistance Prograns Used"</span>) </span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#abalone_F &lt;- abalone[abalone$sex == "F", ]</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>food_expendituresUSD <span class="ot">&lt;-</span> food_expenditures[food_expenditures<span class="sc">$</span>Currency <span class="sc">==</span> <span class="st">"USD"</span>, ]</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(food_expendituresUSD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Impported Data</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>food_expenditures <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"/Users/joshszczepanski/Desktop/506/506-HW1/food_expenditure.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#2 B)</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Cleaned up variable names</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(food_expenditures) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"Age"</span>, <span class="st">"Number of Household Members"</span>, <span class="st">"State"</span>, <span class="st">"Currency"</span>, <span class="st">"Total Food Ependiture"</span>, <span class="st">"Grocery Stores Expenditure"</span>, <span class="st">"Dining Out Expenditure"</span>, <span class="st">"Miscellaneous Food Expenditure"</span>, <span class="st">"Amount of times Dined Out"</span>, <span class="st">"Is alcohol included in your expenditures?"</span>, <span class="st">"Food Assistance Prograns Used"</span>) </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">#2 C)</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Isolated only those paying in USD</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>food_expendituresUSD <span class="ot">&lt;-</span> food_expenditures[food_expenditures<span class="sc">$</span>Currency <span class="sc">==</span> <span class="st">"USD"</span>, ]</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the number of observations before restricting the data</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_expenditures)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  ID Age Number of Household Members State Currency Total Food Ependiture
-1  1  68                           7    LA      USD                436.35
-2  2  88                           5    WA      USD                      
-3  3  82                           3    MS      USD                 279.1
-4  4  73                           8    AK      USD                -20.98
-5  5  89                           0    IN      USD                494.87
-7  7  38                           4    DC      USD                318.79
-  Grocery Stores Expenditure Dining Out Expenditure
-1                     168.59                 140.71
-2                     452.10                 192.94
-3                     301.66                 239.84
-4                     139.66                  69.19
-5                         NA                 191.72
-7                     153.49                 104.05
-  Miscellaneous Food Expenditure Amount of times Dined Out
-1                         109.77                         4
-2                             NA                         1
-3                         103.94                         9
-4                          44.84                         2
-5                         172.31                         3
-7                          39.21                         1
-  Is alcohol included in your expenditures? Food Assistance Prograns Used
-1                                       Yes                          None
-2                                   Unknown                          SNAP
-3                                       Yes                          None
-4                                   Unknown                          None
-5                                       Yes                          None
-7                                       Yes                          SNAP</code></pre>
+<pre><code>[1] 262</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the number of observations after restricting the data</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_expendituresUSD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 230</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#2 D)</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove all responses by people below the age of 18</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>food_expendituresUSD_AdultsOnly <span class="ot">&lt;-</span> food_expendituresUSD[food_expendituresUSD<span class="sc">$</span>Age <span class="sc">&gt;=</span> <span class="dv">18</span>, ]</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#2 E)</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove all responses that did not provide a response for State</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>food_expendituresUSD_AdultsOnly_States <span class="ot">&lt;-</span> food_expendituresUSD_AdultsOnly[food_expendituresUSD_AdultsOnly<span class="sc">$</span>State <span class="sc">!=</span> <span class="st">''</span>, ]</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co">#2 F)</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove responses where there are food expenditures reported as negative values</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>food_expendituresUSD_AdultsOnly_States_wonegatives <span class="ot">&lt;-</span> food_expendituresUSD_AdultsOnly_States[</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  food_expendituresUSD_AdultsOnly_States<span class="sc">$</span><span class="st">`</span><span class="at">Total Food Ependiture</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  food_expendituresUSD_AdultsOnly_States<span class="sc">$</span><span class="st">`</span><span class="at">Grocery Stores Expenditure</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  food_expendituresUSD_AdultsOnly_States<span class="sc">$</span><span class="st">`</span><span class="at">Dining Out Expenditure</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  food_expendituresUSD_AdultsOnly_States<span class="sc">$</span><span class="st">`</span><span class="at">Miscellaneous Food Expenditure</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="dv">0</span>, </span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="co">#2 G</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove responses where the number of times dining out exceeds an average of 2x per day</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout <span class="ot">&lt;-</span> food_expendituresUSD_AdultsOnly_States_wonegatives[food_expendituresUSD_AdultsOnly_States_wonegatives<span class="sc">$</span><span class="st">`</span><span class="at">Amount of times Dined Out</span><span class="st">`</span>, ]</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplify name</span></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>food_expenditures_cleaned <span class="ot">&lt;-</span> food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Display rows to ensure each step cleaned data</span></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_expenditures)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 262</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_expendituresUSD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 230</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_expendituresUSD_AdultsOnly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 208</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_expendituresUSD_AdultsOnly_States)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 203</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_expendituresUSD_AdultsOnly_States_wonegatives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 173</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 169</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplify name</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>food_expenditures_cleaned <span class="ot">&lt;-</span> food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 H</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_expenditures_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 169</code></pre>
 </div>
 </div>
 
