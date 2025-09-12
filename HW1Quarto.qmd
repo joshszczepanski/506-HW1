@@ -1,26 +1,12 @@
 ---
-title: "HW-1Quarto"
+title: "506-HW-1"
+author: "Josh Szczepanski"
 format: html
 editor: visual
 ---
 
 
 ```{r}
-# Install necessary packages
-
-#install.packages("tidyverse")    # Includes dplyr, ggplot2, readr, etc.
-#install.packages("readr")        # For reading .csv and .txt files
-#install.packages("dplyr")        # For data manipulation
-#install.packages("ggplot2")      # For plotting (if needed)
-#install.packages("stringr")      # For string manipulation
-#install.packages("purrr")        # For functional programming
-#install.packages("tibble")       # Enhanced data frames
-#install.packages("broom")        # For tidying statistical output
-#install.packages("data.table")   # Efficient data import/manipulation
-#install.packages("janitor")      # For cleaning variable names
-#install.packages("psych")        # For correlation matrices and descriptives
-
-
 #1 A)
 
 #Import the data frame "abalone"
@@ -61,7 +47,7 @@ max_cor_weight <- names(which.max(correlations_with_rings))
 max_cor_value <- max(correlations_with_rings)
 
 
-#display weight with highest correlation and its value
+# Display weight with highest correlation and its value
 max_cor_weight
 max_cor_value
 
@@ -94,6 +80,7 @@ highest_cor_sex <- names(which.max(correlation_by_sex))
 # Display the sex showing the highest correlation
 highest_cor_sex
 
+#The sex with the highest Correlation is infant (I)
 
 #1 C3)
 
@@ -102,6 +89,11 @@ abalone_most_rings <- which.max(abalone$rings)
 
 #Show the weights for this abalone
 abalone[abalone_most_rings, c("whole_weight", "shucked_weight", "viscera_weight", "shell_weight")]
+
+#The whole weight for the abalone with the most rings is: 1.8075
+#The shucked weight for the abalone with the most rings is: 0.7055
+#The viscera weight for the abalone with the most rings is: 0.3215
+#The shell weight for the abalone with the most rings is: 0.475
 
 #1 C4)
 # Get our numerator
@@ -154,8 +146,11 @@ t_m_i <- t.test(abalone_M$rings, abalone_I$rings)
 
 # Display results
 t_f_m
+# t = 3.6657, df = 2742.4, p-value = 0.0002514
 t_f_i
+# t = 29.477, df = 2508.9, p-value < 2.2e-16
 t_m_i
+# t = 27.221, df = 2859, p-value < 2.2e-16
 
 
 #2 A)
@@ -194,7 +189,7 @@ food_expendituresUSD_AdultsOnly_States_wonegatives <- food_expendituresUSD_Adult
   food_expendituresUSD_AdultsOnly_States$`Miscellaneous Food Expenditure` >= 0, 
 ]
 
-#2 G
+#2 G)
 # Remove responses where the number of times dining out exceeds an average of 2x per day
 food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout <- food_expendituresUSD_AdultsOnly_States_wonegatives[food_expendituresUSD_AdultsOnly_States_wonegatives$`Amount of times Dined Out`, ]
 
@@ -212,7 +207,102 @@ nrow(food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout)
 # Simplify name
 food_expenditures_cleaned <- food_expendituresUSD_AdultsOnly_States_wonegatives_nonextremediningout
 
-# 2 H
+# 2 H)
 nrow(food_expenditures_cleaned)
+
+
+
+# 3 A)
+
+#' Compute the next number in the Collatz sequence
+#'
+#' @param x A positive integer
+#'
+#' @returns The next integer in the Collatz sequence
+#' @export
+#'
+#' @examples
+
+nextCollatz <- function(x) {
+  if (x <= 0 | x %% 1 != 0)
+    return("Please input a positive integer")
+  else if((x/2) %% 1 == 0)
+    returnValue(x/2)
+  else
+    returnValue((3*x)+1)
+  
+}
+
+# Demonstrate it works by reproducing the examples.
+nextCollatz(5)
+nextCollatz(16)
+
+
+# 3 B)
+
+#' Generate the full Collatz sequence from a starting value
+#'
+#' @param x A positive integer
+#'
+#' @returns A numeric vector containing the Collatz sequence
+#' @export
+#'
+#' @examples
+collatzSequence <- function(x) {
+  if (x <= 0 || x %% 1 != 0) {
+    return("Please input a positive integer")
+  }
+  
+  sequence <- c(x)
+  
+  while (x != 1) {
+    x <- nextCollatz(x)
+    sequence <- c(sequence, x)
+  }
+  
+  return(sequence)
+}
+
+
+collatzSequence(5)
+collatzSequence(19)
+
+# 3 C)
+
+# Set starting points extreme enough that they will certainly be eclipsed
+shortest_length <- 10000
+longest_length <- 0
+shortest_number <- 1
+longest_number <- 1
+
+# Identify the starting values between 100 and 500 that produce the shortest and longest Collatz sequences
+for (i in 100:500) {
+  seq <- collatzSequence(i)
+  len <- length(seq)
+  
+  if (len < shortest_length) {
+    shortest_length <- len 
+    shortest_number <- i
+  }
+  
+  if(len > longest_length){
+    longest_length <- len 
+    longest_number <- i
+  }
+}
+
+
+# Demonstrate it works by reproducing the examples.
+shortest_length
+longest_length
+shortest_number
+longest_number
+
+# Display results
+cat("The value with the shortest sequence is:", shortest_number, "with length:", shortest_length, "\n")
+cat("The value with the longest sequence is:", longest_number, "with length:", longest_length, "\n")
+
+# The value with the shortest sequence is: 128 with length: 8 
+# The value with the longest sequence is: 327 with length: 144 
 ```
 
